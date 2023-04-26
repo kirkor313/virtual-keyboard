@@ -12,8 +12,17 @@ function initKeybord () {
   document.body.prepend(keybord);
   keybord.append(keybordDisplay);
   keybord.append(keybordKeys);
-
 }
 
-initKeybord()
+initKeybord();
 
+// Создаю шапку таска
+
+function initTitle () {
+  const keybordTitle = document.createElement("p");
+  keybordTitle.className = "keybord__title";
+  keybordTitle.textContent = "RSS Virtual Keyboard";
+  document.querySelector(".keybord").prepend(keybordTitle);
+}
+
+initTitle ();
