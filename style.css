@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+.keybord__title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: orange;
+}
+
+.keybord {
+  margin: 0 auto;
+}
+
+.keybord__display {
+  display: block;
+  width: 800px;
+  height: 250px;
+  margin: 20px auto;
+  padding: 15px;
+  font-size: 1.6rem;
+  color: grey;
+}
+
+.keybord__keys {
+  width: 800px;
+  margin: 0 auto;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+}
