@@ -48,6 +48,7 @@ body {
   font-size: 1.2rem;
   background-color: rgb(241, 241, 241);
   cursor: pointer;
+  transition: all .3s ease-in;
 }
 
 .keybord__key:hover {
@@ -57,4 +58,9 @@ body {
 .keybord__row {
   display: flex;
   column-gap: 10px;
+}
+
+.active {
+  background-color: rgb(189, 189, 189);
+  border-radius: 50%;
 }
