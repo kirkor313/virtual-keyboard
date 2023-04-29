@@ -96,52 +96,11 @@ const keybordKeys = [
   {codeEvent: "ArrowRigth", keyEnUpper: "rht", keyEnLower: "rht", keyEnCaps: "rht", keyEnShiftCaps: "rht", keyRuUpper: "rht", keyRuLower: "rht", keyRuCaps: "rht", keyRuShiftCaps: "rht"},
 ]
 
-
-// const keybordEventKeys = [
-//   ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace"],
-//   ["Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight"],
-//   ["CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Backslash", "Enter"],
-//   ["ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "Slash","ArrowUp", "ShiftRight"],
-//   ["ControlLeft", "AltLeft", "MetaLeft", "Space", "MetaRight", "AltRight", "ArrowLeft", "ArrowDown", "ArrowRigth"]
-// ]
-
-// const keybordEnUpperKeys = [
-//   ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "Backspace"],
-//   ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}"],
-//   ["CapsLock", "A", "S", "D", "F", "G", "H", "J", "K", "L", ":", '"', "|", "Enter"],
-//   ["Shift", "Z", "X", "C", "V", "B", "N", "M", "<", ">", "?","up", "Shift"],
-//   ["Ctrl", "Alt", "Cmd", " ", "Cmd", "Alt", "left", "down", "rigth"]
-// ]
-
-// const keybordEnLowerKeys = [
-//   ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace"],
-//   ["Tab", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]"],
-//   ["CapsLock", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", " \ ", "Enter"],
-//   ["Shift", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/","up", "Shift"],
-//   ["Ctrl", "Alt", "Cmd", " ", "Cmd", "Alt", "left", "down", "rigth"]
-// ]
-
-// const keybordRuUpperKeys = [
-//   ["~", "!", '"', "№", "%", ":", ",", ".", ";", "(", ")", "_", "+", "Backspace"],
-//   ["Tab", "Й", "Ц", "У", "К", "Е", "Н", "Г", "Ш", "Щ", "З", "Х", "Ъ"],
-//   ["CapsLock", "Ф", "Ы", "В", "А", "П", "Р", "О", "Л", "Д", "Ж", "Э", "Ё", "Enter"],
-//   ["Shift", "Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю", "Ю","гp", "Shift"],
-//   ["Ctrl", "Alt", "Cmd", " ", "Cmd", "Alt", "left", "down", "rigth"]
-// ]
-
-// const keybordRuLowerKeys = [
-//   ["]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace"],
-//   ["Tab", "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ"],
-//   ["CapsLock", "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э", "ё", "Enter"],
-//   ["ShiftLeft", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", "/","гp", "Shift"],
-//   ["Ctrl", "Alt", "Cmd", " ", "Cmd", "Alt", "left", "down", "rigth"]
-// ]
-
 // Добавляю кнопки в тело клавиатуры
 
 function initKeysOfKeybord () {
   const keybordKey = document.createElement("div");
-  keybordKey.className = "keybord__key";
+  keybordKey.className = "keybord__key key";
   document.querySelector(".keybord__keys").append(keybordKey);
 }
 
@@ -149,22 +108,79 @@ for (codeEvent of keybordKeys) {
   initKeysOfKeybord ()
 }
 
-function initKeysOfRow () {
-  let row = document.querySelectorAll(".keybord__row");
-  for (let i = 0; i < row.length; i++) {
-    for (let j = 0; j < keybordEnLowerKeys.length; j++) {
-      if (i == j) {
-        key = "";
-        for (let k = 0; k < keybordEnLowerKeys[j].length; k++) {
-        key += "<div class ='keybord__key'>" + (keybordEnLowerKeys[j][k]) + "</div>";
-        row[i].innerHTML = key;
-        }
-      }
-    }
-  }
+// Добавляю функцию вставки букв и симбволов английской раскладки
+
+function setKeyEn () {
+  document.querySelectorAll(".key-en_upper").forEach((el,i) => {
+    el.textContent = `${keybordKeys[i].keyEnUpper}`
+  })
+  document.querySelectorAll(".key-en_lower").forEach((el,i) => {
+    el.textContent = `${keybordKeys[i].keyEnLower}`
+  })
+  document.querySelectorAll(".key-en_caps").forEach((el,i) => {
+    el.textContent = `${keybordKeys[i].keyEnCaps}`
+  })
+  document.querySelectorAll(".key-en_shift-caps").forEach((el,i) => {
+    el.textContent = `${keybordKeys[i].keyEnShiftCaps}`
+  })
 }
 
-initKeysOfRow ()
+// Добавляю функцию вставки букв и симбволов русской раскладки
+
+function setKeyRU () {
+  document.querySelectorAll(".key-ru_upper").forEach((el,i) => {
+    el.textContent = `${keybordKeys[i].keyRuUpper}`
+  })
+  document.querySelectorAll(".key-ru_lower").forEach((el,i) => {
+    el.textContent = `${keybordKeys[i].keyRuLower}`
+  })
+  document.querySelectorAll(".key-ru_caps").forEach((el,i) => {
+    el.textContent = `${keybordKeys[i].keyRuCaps}`
+  })
+  document.querySelectorAll(".key-ru_shift-caps").forEach((el,i) => {
+    el.textContent = `${keybordKeys[i].keyRuShiftCaps}`
+  })
+}
+
+// Добавляю функцию общей сборки символов
+
+function setKeys() {
+  const keys = document.querySelectorAll(".keybord__key");
+  keys.forEach((el,i) => {
+    const
+      keyEnUpper = document.createElement("span"),
+      keyEnLower = document.createElement("span"),
+      keyEnCaps = document.createElement("span"),
+      keyEnShiftCaps = document.createElement("span"),
+      keyRuUpper = document.createElement("span"),
+      keyRuLower = document.createElement("span"),
+      keyRuCaps = document.createElement("span"),
+      keyRuShiftCaps = document.createElement("span");
+      keyEnUpper.className = "key-en key-en_upper"
+      keyEnLower.className = "key-en key-en_lower hidden";
+      keyEnCaps.className = "key-en key-en_caps hidden";
+      keyEnShiftCaps.className = "key-en key-en_shift-caps hidden";
+      keyRuUpper.className = "key-ru key-ru_upper hidden";
+      keyRuLower.className = "key-ru key-ru_lower hidden";
+      keyRuCaps.className = "key-ru key-ru_caps hidden";
+      keyRuShiftCaps.className = "key-ru key-ru_shift-caps hidden";
+    el.append(
+      keyEnUpper,
+      keyEnLower,
+      keyEnCaps,
+      keyEnShiftCaps,
+      keyRuUpper,
+      keyRuLower,
+      keyRuCaps,
+      keyRuShiftCaps
+      );
+    el.setAttribute("data", keybordKeys[i].codeEvent);
+    setKeyEn ();
+    setKeyRU ()
+  })
+}
+
+setKeys()
 
 // Добавляю функцию для определения нажатой клавиши на клавиатруре
 
