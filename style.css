@@ -33,11 +33,13 @@ body {
   padding: 5px;
   border: 2px solid black;
   border-radius: 5px;
-  cursor: pointer;
   gap: 10px;
 }
 
 .keybord__key {
+  display:flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   border: 1px solid black;
@@ -45,6 +47,11 @@ body {
   border-radius: 5px;
   font-size: 1.2rem;
   background-color: rgb(241, 241, 241);
+  cursor: pointer;
+}
+
+.keybord__key:hover {
+  background-color: orange;
 }
 
 .keybord__row {

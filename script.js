@@ -67,6 +67,6 @@ function initKeysOfRow () {
 initKeysOfRow ()
 
 
-document.onkeypress = function(e) {
-  console.log(e.charCode)
-}
+// document.onkeypress = function(e) {
+//   console.log(e.charCode)
+// }
