@@ -56,7 +56,7 @@ function initKeysOfRow () {
       if (i == j) {
         key = "";
         for (let k = 0; k < keybordLowerKeys[j].length; k++) {
-        key += '<div class="keybord__key">' + String.fromCharCode(keybordLowerKeys[j][k]) + '</div>';
+        key += "<div class='keybord__key' data ='" + keybordLowerKeys[j][k] + "'>" + String.fromCharCode(keybordLowerKeys[j][k]) + "</div>";
         row[i].innerHTML = key;
         }
       }
@@ -66,7 +66,15 @@ function initKeysOfRow () {
 
 initKeysOfRow ()
 
+// Добавляю функцию для определения нажатой клавиши на клавиатруре
 
-// document.onkeypress = function(e) {
-//   console.log(e.charCode)
-// }
+function keybordClick () {
+  document.addEventListener('keypress',(event) => {
+    document.querySelectorAll(".keybord__key").forEach(el =>
+      el.classList.remove ("active")
+    )
+    document.querySelector( ".keybord__key[data='" + event.keyCode + "']").classList.add("active")
+  })
+}
+
+keybordClick ()
