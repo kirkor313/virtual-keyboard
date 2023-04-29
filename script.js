@@ -29,12 +29,12 @@ initTitle ();
 
 // Создаю массив для ряда клавиш
 
-const keybordLowerKeys = [
-  [96, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45, 61, 8],
-  [9, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 91, 93, 13],
-  [20, 97, 115, 100, 102, 103, 104, 106, 107, 108, 59, 39, 92, 13],
-  [16, 122, 120, 99, 118, 98, 110, 109, 44, 46, 47, 16],
-  [17, 18, 91, 32, 93, 18, 37, 40, 39]
+const keybordKeys = [
+  ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace"],
+  ["Tab", "KeyQ", "KeyW", "KeE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight"],
+  ["CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Backslash", "Enter"],
+  ["ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "Slash","ArrowUp", "ShiftRight"],
+  ["ControlLeft", "AltLeft", "MetaLeft", "Space", "MetaRight", "AltRight", "ArrowLeft", "ArrowDown", "ArrowRigth"]
 ]
 
 // Добавляю строки и кнопки в нижнем регистре в тело клавиатуры
@@ -45,18 +45,18 @@ function initRowsOfKeybord () {
   document.querySelector(".keybord__keys").append(keybordRow);
 }
 
-for (row of keybordLowerKeys) {
+for (row of keybordKeys) {
   initRowsOfKeybord ()
 }
 
 function initKeysOfRow () {
   let row = document.querySelectorAll(".keybord__row");
   for (let i = 0; i < row.length; i++) {
-    for (let j = 0; j < keybordLowerKeys.length; j++) {
+    for (let j = 0; j < keybordKeys.length; j++) {
       if (i == j) {
         key = "";
-        for (let k = 0; k < keybordLowerKeys[j].length; k++) {
-        key += "<div class='keybord__key' data ='" + keybordLowerKeys[j][k] + "'>" + String.fromCharCode(keybordLowerKeys[j][k]) + "</div>";
+        for (let k = 0; k < keybordKeys[j].length; k++) {
+        key += "<div class='keybord__key' data ='" + keybordKeys[j][k] + "'>" + String.fromCharCode(keybordrKeys[j][k]) + "</div>";
         row[i].innerHTML = key;
         }
       }
