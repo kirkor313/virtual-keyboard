@@ -29,15 +29,15 @@ initTitle ();
 
 // Создаю массив для ряда клавиш
 
-const keybordRows = [
-  [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8],
-  [9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 13],
-  [20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 220, 13],
-  [16, 192, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 16],
+const keybordLowerKeys = [
+  [96, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45, 61, 8],
+  [9, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 91, 93, 13],
+  [20, 97, 115, 100, 102, 103, 104, 106, 107, 108, 59, 39, 92, 13],
+  [16, 122, 120, 99, 118, 98, 110, 109, 44, 46, 47, 16],
   [17, 18, 91, 32, 93, 18, 37, 40, 39]
 ]
 
-// Добавляю строки и кнопки в тело клавиатуры
+// Добавляю строки и кнопки в нижнем регистре в тело клавиатуры
 
 function initRowsOfKeybord () {
   const keybordRow = document.createElement("div");
@@ -45,18 +45,18 @@ function initRowsOfKeybord () {
   document.querySelector(".keybord__keys").append(keybordRow);
 }
 
-for (row of keybordRows) {
+for (row of keybordLowerKeys) {
   initRowsOfKeybord ()
 }
 
 function initKeysOfRow () {
   let row = document.querySelectorAll(".keybord__row");
   for (let i = 0; i < row.length; i++) {
-    for (let j = 0; j < keybordRows.length; j++) {
+    for (let j = 0; j < keybordLowerKeys.length; j++) {
       if (i == j) {
         key = "";
-        for (let k = 0; k < keybordRows[j].length; k++) {
-        key += '<div class="keybord__key">' + String.fromCharCode(keybordRows[j][k]) + '</div>';
+        for (let k = 0; k < keybordLowerKeys[j].length; k++) {
+        key += '<div class="keybord__key">' + String.fromCharCode(keybordLowerKeys[j][k]) + '</div>';
         row[i].innerHTML = key;
         }
       }
@@ -66,3 +66,7 @@ function initKeysOfRow () {
 
 initKeysOfRow ()
 
+
+document.onkeypress = function(e) {
+  console.log(e.charCode)
+}
