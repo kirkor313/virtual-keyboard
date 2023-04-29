@@ -137,16 +137,16 @@ const keybordKeys = [
 //   ["Ctrl", "Alt", "Cmd", " ", "Cmd", "Alt", "left", "down", "rigth"]
 // ]
 
-// Добавляю строки и кнопки в нижнем регистре в тело клавиатуры
+// Добавляю кнопки в тело клавиатуры
 
-function initRowsOfKeybord () {
-  const keybordRow = document.createElement("div");
-  keybordRow.className = "keybord__row";
-  document.querySelector(".keybord__keys").append(keybordRow);
+function initKeysOfKeybord () {
+  const keybordKey = document.createElement("div");
+  keybordKey.className = "keybord__key";
+  document.querySelector(".keybord__keys").append(keybordKey);
 }
 
-for (row of keybordEnLowerKeys) {
-  initRowsOfKeybord ()
+for (codeEvent of keybordKeys) {
+  initKeysOfKeybord ()
 }
 
 function initKeysOfRow () {
