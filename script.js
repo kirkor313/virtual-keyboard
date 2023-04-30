@@ -93,7 +93,7 @@ const keybordKeys = [
   {codeEvent: "AltRight", keyEnUpper: "Alt", keyEnLower: "Alt", keyEnCaps: "Alt", keyEnShiftCaps: "Alt", keyRuUpper: "Alt", keyRuLower: "Alt", keyRuCaps: "Alt", keyRuShiftCaps: "Alt"},
   {codeEvent: "ArrowLeft", keyEnUpper: "◄", keyEnLower: "◄", keyEnCaps: "◄", keyEnShiftCaps: "◄", keyRuUpper: "◄", keyRuLower: "◄", keyRuCaps: "◄", keyRuShiftCaps: "◄"},
   {codeEvent: "ArrowDown", keyEnUpper: "▼", keyEnLower: "▼", keyEnCaps: "▼", keyEnShiftCaps: "▼", keyRuUpper: "▼", keyRuLower: "▼", keyRuCaps: "▼", keyRuShiftCaps: "▼"},
-  {codeEvent: "ArrowRigth", keyEnUpper: "►", keyEnLower: "►", keyEnCaps: "►", keyEnShiftCaps: "►", keyRuUpper: "►", keyRuLower: "►", keyRuCaps: "►", keyRuShiftCaps: "►"},
+  {codeEvent: "ArrowRight", keyEnUpper: "►", keyEnLower: "►", keyEnCaps: "►", keyEnShiftCaps: "►", keyRuUpper: "►", keyRuLower: "►", keyRuCaps: "►", keyRuShiftCaps: "►"}
 ]
 
 // Добавляю кнопки в тело клавиатуры
