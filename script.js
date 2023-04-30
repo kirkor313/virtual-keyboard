@@ -186,7 +186,8 @@ setKeys()
 
 function keybordKeyDown () {
   document.addEventListener("keydown",(event) => {
-    document.querySelector( ".keybord__key[data='" + event.code + "']").classList.add("active")
+    document.querySelector( ".keybord__key[data='" + event.code + "']").classList.add("active");
+    inputKey ()
   })
 }
 
@@ -205,9 +206,8 @@ keybordKeyUp()
 function mouseClickDown () {
   document.querySelectorAll(".keybord__key").forEach(el => {
     el.addEventListener("mousedown", (event) => {
-      console.log(event.target)
-      console.log(event.target.closest(".keybord__key"))
       document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.add("active")
+      inputKey ()
     })
   })
 }
@@ -226,3 +226,18 @@ function mouseClickUp () {
 }
 
 mouseClickUp ()
+
+// Добавляю функию вывода символов в textarea
+
+function inputKey () {
+  const textArea = document.querySelector(".keybord__display");
+  const activeSetKeys = document.querySelector(".active");
+  let activeKey;
+  for(let i = 0; i < activeSetKeys.childNodes.length; i++) {
+    if(!activeSetKeys.childNodes[i].classList.contains("hidden")) {
+      activeKey = activeSetKeys.childNodes[i]
+    }
+  }
+  const value = activeKey.textContent;
+  textArea.value += `${value}`
+}
