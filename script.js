@@ -191,10 +191,12 @@ function keybordKeyDown () {
     if (event.code === "Backspace") {
       backspace ()
     }
-    if (event.ctrlKey && event.shiftKey ) {
+    if (event.ctrlKey && event.altKey ) {
       switchLang ()
     }
-    console.log(event.key)
+    if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
+      shiftKeyDown ()
+    }
   })
 }
 
@@ -202,7 +204,10 @@ keybordKeyDown ()
 
 function keybordKeyUp () {
   document.addEventListener("keyup",(event) => {
-    document.querySelector( ".keybord__key[data='" + event.code + "']").classList.remove("active")
+    document.querySelector( ".keybord__key[data='" + event.code + "']").classList.remove("active");
+    if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
+      shiftKeyUp ()
+    }
   })
 }
 
@@ -218,6 +223,9 @@ function mouseClickDown () {
       if (event.target.closest(".keybord__key").getAttribute("data") === "Backspace") {
         backspace ()
       }
+      if (event.target.closest(".keybord__key").getAttribute("data") === "ShiftLeft" || event.target.closest(".keybord__key").getAttribute("data") === "ShiftRight") {
+        shiftKeyDown ()
+      }
     })
   })
 }
@@ -227,11 +235,17 @@ mouseClickDown ()
 function mouseClickUp () {
   document.querySelectorAll(".keybord__key").forEach(el => {
     el.addEventListener("mouseup", (event) => {
-      document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active")
+      document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active");
+      if (event.target.closest(".keybord__key").getAttribute("data") === "ShiftLeft" || event.target.closest(".keybord__key").getAttribute("data") === "ShiftRight") {
+        shiftKeyUp ()
+      }
     })
-    el.addEventListener("mouseout", (event) => {
-      document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active")
-    })
+    // el.addEventListener("mouseout", (event) => {
+    //   document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active");
+    //   if (event.target.closest(".keybord__key").getAttribute("data") === "ShiftLeft" || event.target.closest(".keybord__key").getAttribute("data") === "ShiftRight") {
+    //     shiftKeyUp ()
+    //   }
+    // })
   })
 }
 
@@ -256,7 +270,7 @@ function inputKey () {
 
 function backspace () {
   const textArea = document.querySelector(".keybord__display");
-  textArea.value = textArea.value.substring(0, textArea.value.length - 1);
+  textArea.value = textArea.value.substring(0, textArea.value.length - 10);
 }
 
 // Добавляю функию переключения языкa
@@ -269,3 +283,39 @@ function switchLang () {
     el.classList.toggle("hidden")
   })
 }
+
+// Добавляю функию Shift
+
+function shiftKeyDown () {
+  document.querySelectorAll(".key").forEach(el => {
+    if (!el.classList.contains("hidden") && el.classList.contains("key-en_lower")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-en_upper").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+    if (!el.classList.contains("hidden") && el.classList.contains("key-ru_lower")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-ru_upper").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+  });
+}
+
+function shiftKeyUp () {
+  document.querySelectorAll(".key").forEach(el => {
+    if (!el.classList.contains("hidden") && el.classList.contains("key-en_upper")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-en_lower").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+    if (!el.classList.contains("hidden") && el.classList.contains("key-ru_upper")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-ru_lower").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+  });
+}
+
+
+
+
