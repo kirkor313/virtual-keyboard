@@ -157,7 +157,7 @@ function setKeys() {
       keyRuCaps = document.createElement("span"),
       keyRuShiftCaps = document.createElement("span");
       keyEnUpper.className = "key key-en key-en_upper hidden"
-      keyEnLower.className = "key key-en key-en_lower ";
+      keyEnLower.className = "key key-en key-en_lower";
       keyEnCaps.className = "key key-en key-en_caps hidden";
       keyEnShiftCaps.className = "key key-en key-en_shift-caps hidden";
       keyRuUpper.className = "key key-ru key-ru_upper hidden";
@@ -188,7 +188,13 @@ function keybordKeyDown () {
   document.addEventListener("keydown",(event) => {
     document.querySelector( ".keybord__key[data='" + event.code + "']").classList.add("active");
     inputKey ()
-    backspace ()
+    if (event.code === "Backspace") {
+      backspace ()
+    }
+    if (event.ctrlKey && event.shiftKey ) {
+      switchLang ()
+    }
+    console.log(event.key)
   })
 }
 
@@ -209,7 +215,9 @@ function mouseClickDown () {
     el.addEventListener("mousedown", (event) => {
       document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.add("active")
       inputKey ();
-      backspace ()
+      if (event.target.closest(".keybord__key").getAttribute("data") === "Backspace") {
+        backspace ()
+      }
     })
   })
 }
@@ -248,8 +256,16 @@ function inputKey () {
 
 function backspace () {
   const textArea = document.querySelector(".keybord__display");
-  if(event.code === "Backspace" || event.target.closest(".keybord__key").getAttribute("data") === "Backspace") {
-    textArea.value = textArea.value.substring(0, textArea.value.length - 10)
-  }
+  textArea.value = textArea.value.substring(0, textArea.value.length - 1);
 }
 
+// Добавляю функию переключения языкa
+
+function switchLang () {
+  document.querySelectorAll(".key-en_lower").forEach(el => {
+    el.classList.toggle("hidden")
+  })
+  document.querySelectorAll(".key-ru_lower").forEach(el => {
+    el.classList.toggle("hidden")
+  })
+}

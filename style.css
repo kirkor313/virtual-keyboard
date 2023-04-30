@@ -90,7 +90,7 @@ body {
 .keybord__key[data = "AltRight"],
 .keybord__key[data = "ArrowLeft"],
 .keybord__key[data = "ArrowDown"],
-.keybord__key[data = "ArrowRigth"],
+.keybord__key[data = "ArrowRight"],
 .keybord__key[data = "ArrowUp"] {
   background: rgb(225, 225, 225);
 }
