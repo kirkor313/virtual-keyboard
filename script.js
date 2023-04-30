@@ -57,7 +57,7 @@ const keybordKeys = [
   {codeEvent: "KeyP", keyEnUpper: "P", keyEnLower: "p", keyEnCaps: "P", keyEnShiftCaps: "P", keyRuUpper: "З", keyRuLower: "з", keyRuCaps: "З", keyRuShiftCaps: "З"},
   {codeEvent: "BracketLeft", keyEnUpper: "{", keyEnLower: "[", keyEnCaps: "[", keyEnShiftCaps: "{", keyRuUpper: "Х", keyRuLower: "х", keyRuCaps: "Х", keyRuShiftCaps: "Х"},
   {codeEvent: "BracketRight", keyEnUpper: "}", keyEnLower: "]", keyEnCaps: "]", keyEnShiftCaps: "}", keyRuUpper: "Ъ", keyRuLower: "ъ", keyRuCaps: "Ъ", keyRuShiftCaps: "Ъ"},
-  {codeEvent: "Enter", keyEnUpper: "Enter", keyEnLower: "Enter", keyEnCaps: "Enter", keyEnShiftCaps: "Enter", keyRuUpper: "Enter", keyRuLower: "Enter", keyRuCaps: "Enter", keyRuShiftCaps: "Enter"},
+  {codeEvent: "Delete", keyEnUpper: "Delete", keyEnLower: "Delete", keyEnCaps: "Delete", keyEnShiftCaps: "Delete", keyRuUpper: "Delete", keyRuLower: "Delete", keyRuCaps: "Delete", keyRuShiftCaps: "Delete"},
   {codeEvent: "CapsLock", keyEnUpper: "CapsLock", keyEnLower: "CapsLock", keyEnCaps: "CapsLock", keyEnShiftCaps: "CapsLock", keyRuUpper: "CapsLock", keyRuLower: "CapsLock", keyRuCaps: "CapsLock", keyRuShiftCaps: "CapsLock"},
   {codeEvent: "KeyA", keyEnUpper: "A", keyEnLower: "a", keyEnCaps: "A", keyEnShiftCaps: "A", keyRuUpper: "Ф", keyRuLower: "ф", keyRuCaps: "Ф", keyRuShiftCaps: "Ф"},
   {codeEvent: "KeyS", keyEnUpper: "S", keyEnLower: "s", keyEnCaps: "S", keyEnShiftCaps: "S", keyRuUpper: "Ы", keyRuLower: "ы", keyRuCaps: "Ы", keyRuShiftCaps: "Ы"},
@@ -70,7 +70,7 @@ const keybordKeys = [
   {codeEvent: "KeyL", keyEnUpper: "L", keyEnLower: "l", keyEnCaps: "L", keyEnShiftCaps: "L", keyRuUpper: "Д", keyRuLower: "д", keyRuCaps: "Д", keyRuShiftCaps: "Д"},
   {codeEvent: "Semicolon", keyEnUpper: ":", keyEnLower: ";", keyEnCaps: ";", keyEnShiftCaps: ":", keyRuUpper: "Ж", keyRuLower: "ж", keyRuCaps: "Ж", keyRuShiftCaps: "Ж"},
   {codeEvent: "Quote", keyEnUpper: '"', keyEnLower: "'", keyEnCaps: "'", keyEnShiftCaps: '"', keyRuUpper: "Э", keyRuLower: "э", keyRuCaps: "Э", keyRuShiftCaps: "Э"},
-  {codeEvent: "Backslash", keyEnUpper: "|", keyEnLower: " \ ", keyEnCaps: " \ ", keyEnShiftCaps: "|", keyRuUpper: "Ё", keyRuLower: "ё", keyRuCaps: "Ё", keyRuShiftCaps: "Ё"},
+  {codeEvent: "Backslash", keyEnUpper: "|", keyEnLower: "\\", keyEnCaps: "\\", keyEnShiftCaps: "|", keyRuUpper: "Ё", keyRuLower: "ё", keyRuCaps: "Ё", keyRuShiftCaps: "Ё"},
   {codeEvent: "Enter", keyEnUpper: "Enter", keyEnLower: "Enter", keyEnCaps: "Enter", keyEnShiftCaps: "Enter", keyRuUpper: "Enter", keyRuLower: "Enter", keyRuCaps: "Enter", keyRuShiftCaps: "Enter"},
   {codeEvent: "ShiftLeft", keyEnUpper: "Shift", keyEnLower: "Shift", keyEnCaps: "Shift", keyEnShiftCaps: "Shift", keyRuUpper: "Shift", keyRuLower: "Shift", keyRuCaps: "Shift", keyRuShiftCaps: "Shift"},
   {codeEvent: "KeyZ", keyEnUpper: "Z", keyEnLower: "z", keyEnCaps: "Z", keyEnShiftCaps: "Z", keyRuUpper: "Я", keyRuLower: "я", keyRuCaps: "Я", keyRuShiftCaps: "Я"},
@@ -83,17 +83,17 @@ const keybordKeys = [
   {codeEvent: "Comma", keyEnUpper: "<", keyEnLower: ",", keyEnCaps: ",", keyEnShiftCaps: "<", keyRuUpper: "Б", keyRuLower: "б", keyRuCaps: "Б", keyRuShiftCaps: "Б"},
   {codeEvent: "Period", keyEnUpper: ">", keyEnLower: ".", keyEnCaps: ".", keyEnShiftCaps: ">", keyRuUpper: "Ю", keyRuLower: "ю", keyRuCaps: "Ю", keyRuShiftCaps: "Ю"},
   {codeEvent: "Slash", keyEnUpper: "?", keyEnLower: "/", keyEnCaps: "/", keyEnShiftCaps: "?", keyRuUpper: "?", keyRuLower: "/", keyRuCaps: "/", keyRuShiftCaps: "?"},
-  {codeEvent: "ArrowUp", keyEnUpper: "up", keyEnLower: "up", keyEnCaps: "up", keyEnShiftCaps: "up", keyRuUpper: "up", keyRuLower: "up", keyRuCaps: "up", keyRuShiftCaps: "up"},
+  {codeEvent: "ArrowUp", keyEnUpper: "▲", keyEnLower: "▲", keyEnCaps: "▲", keyEnShiftCaps: "▲", keyRuUpper: "▲", keyRuLower: "▲", keyRuCaps: "▲", keyRuShiftCaps: "▲"},
   {codeEvent: "ShiftRight", keyEnUpper: "Shift", keyEnLower: "Shift", keyEnCaps: "Shift", keyEnShiftCaps: "Shift", keyRuUpper: "Shift", keyRuLower: "Shift", keyRuCaps: "Shift", keyRuShiftCaps: "Shift"},
   {codeEvent: "ControlLeft", keyEnUpper: "Ctrl", keyEnLower: "Ctrl", keyEnCaps: "Ctrl", keyEnShiftCaps: "Ctrl", keyRuUpper: "Ctrl", keyRuLower: "Ctrl", keyRuCaps: "Ctrl", keyRuShiftCaps: "Ctrl"},
   {codeEvent: "AltLeft", keyEnUpper: "Alt", keyEnLower: "Alt", keyEnCaps: "Alt", keyEnShiftCaps: "Alt", keyRuUpper: "Alt", keyRuLower: "Alt", keyRuCaps: "Alt", keyRuShiftCaps: "Alt"},
-  {codeEvent: "BackqMetaLeftuote", keyEnUpper: "Cmd", keyEnLower: "Cmd", keyEnCaps: "Cmd", keyEnShiftCaps: "Cmd", keyRuUpper: "Cmd", keyRuLower: "Cmd", keyRuCaps: "Cmd", keyRuShiftCaps: "Cmd"},
+  {codeEvent: "MetaLeft", keyEnUpper: "Cmd", keyEnLower: "Cmd", keyEnCaps: "Cmd", keyEnShiftCaps: "Cmd", keyRuUpper: "Cmd", keyRuLower: "Cmd", keyRuCaps: "Cmd", keyRuShiftCaps: "Cmd"},
   {codeEvent: "Space", keyEnUpper: " ", keyEnLower: " ", keyEnCaps: " ", keyEnShiftCaps: " ", keyRuUpper: " ", keyRuLower: " ", keyRuCaps: " ", keyRuShiftCaps: " "},
   {codeEvent: "MetaRight", keyEnUpper: "Cmd", keyEnLower: "Cmd", keyEnCaps: "Cmd", keyEnShiftCaps: "Cmd", keyRuUpper: "Cmd", keyRuLower: "Cmd", keyRuCaps: "Cmd", keyRuShiftCaps: "Cmd"},
   {codeEvent: "AltRight", keyEnUpper: "Alt", keyEnLower: "Alt", keyEnCaps: "Alt", keyEnShiftCaps: "Alt", keyRuUpper: "Alt", keyRuLower: "Alt", keyRuCaps: "Alt", keyRuShiftCaps: "Alt"},
-  {codeEvent: "ArrowLeft", keyEnUpper: "left", keyEnLower: "left", keyEnCaps: "left", keyEnShiftCaps: "left", keyRuUpper: "left", keyRuLower: "left", keyRuCaps: "left", keyRuShiftCaps: "left"},
-  {codeEvent: "ArrowDown", keyEnUpper: "down", keyEnLower: "down", keyEnCaps: "down", keyEnShiftCaps: "down", keyRuUpper: "down", keyRuLower: "down", keyRuCaps: "down", keyRuShiftCaps: "down"},
-  {codeEvent: "ArrowRigth", keyEnUpper: "rht", keyEnLower: "rht", keyEnCaps: "rht", keyEnShiftCaps: "rht", keyRuUpper: "rht", keyRuLower: "rht", keyRuCaps: "rht", keyRuShiftCaps: "rht"},
+  {codeEvent: "ArrowLeft", keyEnUpper: "◄", keyEnLower: "◄", keyEnCaps: "◄", keyEnShiftCaps: "◄", keyRuUpper: "◄", keyRuLower: "◄", keyRuCaps: "◄", keyRuShiftCaps: "◄"},
+  {codeEvent: "ArrowDown", keyEnUpper: "▼", keyEnLower: "▼", keyEnCaps: "▼", keyEnShiftCaps: "▼", keyRuUpper: "▼", keyRuLower: "▼", keyRuCaps: "▼", keyRuShiftCaps: "▼"},
+  {codeEvent: "ArrowRigth", keyEnUpper: "►", keyEnLower: "►", keyEnCaps: "►", keyEnShiftCaps: "►", keyRuUpper: "►", keyRuLower: "►", keyRuCaps: "►", keyRuShiftCaps: "►"},
 ]
 
 // Добавляю кнопки в тело клавиатуры
@@ -156,8 +156,8 @@ function setKeys() {
       keyRuLower = document.createElement("span"),
       keyRuCaps = document.createElement("span"),
       keyRuShiftCaps = document.createElement("span");
-      keyEnUpper.className = "key-en key-en_upper"
-      keyEnLower.className = "key-en key-en_lower hidden";
+      keyEnUpper.className = "key-en key-en_upper hidden"
+      keyEnLower.className = "key-en key-en_lower ";
       keyEnCaps.className = "key-en key-en_caps hidden";
       keyEnShiftCaps.className = "key-en key-en_shift-caps hidden";
       keyRuUpper.className = "key-ru key-ru_upper hidden";
