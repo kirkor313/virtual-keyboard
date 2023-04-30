@@ -188,6 +188,7 @@ function keybordKeyDown () {
   document.addEventListener("keydown",(event) => {
     document.querySelector( ".keybord__key[data='" + event.code + "']").classList.add("active");
     inputKey ()
+    backspace ()
   })
 }
 
@@ -207,7 +208,8 @@ function mouseClickDown () {
   document.querySelectorAll(".keybord__key").forEach(el => {
     el.addEventListener("mousedown", (event) => {
       document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.add("active")
-      inputKey ()
+      inputKey ();
+      backspace ()
     })
   })
 }
@@ -241,3 +243,13 @@ function inputKey () {
   const value = activeKey.textContent;
   textArea.value += `${value}`
 }
+
+// Добавляю функию backspace
+
+function backspace () {
+  const textArea = document.querySelector(".keybord__display");
+  if(event.code === "Backspace" || event.target.closest(".keybord__key").getAttribute("data") === "Backspace") {
+    textArea.value = textArea.value.substring(0, textArea.value.length - 10)
+  }
+}
+
