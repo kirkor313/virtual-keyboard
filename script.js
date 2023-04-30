@@ -100,7 +100,7 @@ const keybordKeys = [
 
 function initKeysOfKeybord () {
   const keybordKey = document.createElement("div");
-  keybordKey.className = "keybord__key key";
+  keybordKey.className = "keybord__key";
   document.querySelector(".keybord__keys").append(keybordKey);
 }
 
@@ -156,14 +156,14 @@ function setKeys() {
       keyRuLower = document.createElement("span"),
       keyRuCaps = document.createElement("span"),
       keyRuShiftCaps = document.createElement("span");
-      keyEnUpper.className = "key-en key-en_upper hidden"
-      keyEnLower.className = "key-en key-en_lower ";
-      keyEnCaps.className = "key-en key-en_caps hidden";
-      keyEnShiftCaps.className = "key-en key-en_shift-caps hidden";
-      keyRuUpper.className = "key-ru key-ru_upper hidden";
-      keyRuLower.className = "key-ru key-ru_lower hidden";
-      keyRuCaps.className = "key-ru key-ru_caps hidden";
-      keyRuShiftCaps.className = "key-ru key-ru_shift-caps hidden";
+      keyEnUpper.className = "key key-en key-en_upper hidden"
+      keyEnLower.className = "key key-en key-en_lower ";
+      keyEnCaps.className = "key key-en key-en_caps hidden";
+      keyEnShiftCaps.className = "key key-en key-en_shift-caps hidden";
+      keyRuUpper.className = "key key-ru key-ru_upper hidden";
+      keyRuLower.className = "key key-ru key-ru_lower hidden";
+      keyRuCaps.className = "key key-ru key-ru_caps hidden";
+      keyRuShiftCaps.className = "key key-ru key-ru_shift-caps hidden";
     el.append(
       keyEnUpper,
       keyEnLower,
@@ -185,7 +185,7 @@ setKeys()
 // Добавляю функцию для определения нажатой клавиши на клавиатруре
 
 function keybordKeyDown () {
-  document.addEventListener('keydown',(event) => {
+  document.addEventListener("keydown",(event) => {
     document.querySelector( ".keybord__key[data='" + event.code + "']").classList.add("active")
   })
 }
@@ -193,9 +193,36 @@ function keybordKeyDown () {
 keybordKeyDown ()
 
 function keybordKeyUp () {
-  document.addEventListener('keyup',(event) => {
+  document.addEventListener("keyup",(event) => {
     document.querySelector( ".keybord__key[data='" + event.code + "']").classList.remove("active")
   })
 }
 
 keybordKeyUp()
+
+// Добавляю функцию для определения нажатой клавиши с помощью мышки
+
+function mouseClickDown () {
+  document.querySelectorAll(".keybord__key").forEach(el => {
+    el.addEventListener("mousedown", (event) => {
+      console.log(event.target)
+      console.log(event.target.closest(".keybord__key"))
+      document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.add("active")
+    })
+  })
+}
+
+mouseClickDown ()
+
+function mouseClickUp () {
+  document.querySelectorAll(".keybord__key").forEach(el => {
+    el.addEventListener("mouseup", (event) => {
+      document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active")
+    })
+    el.addEventListener("mouseout", (event) => {
+      document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active")
+    })
+  })
+}
+
+mouseClickUp ()

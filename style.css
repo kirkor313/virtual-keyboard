@@ -92,7 +92,7 @@ body {
 .keybord__key[data = "ArrowDown"],
 .keybord__key[data = "ArrowRigth"],
 .keybord__key[data = "ArrowUp"] {
-  background-color: rgb(225, 225, 225);
+  background: rgb(225, 225, 225);
 }
 
 .keybord__key:hover {
@@ -104,8 +104,8 @@ body {
   column-gap: 10px;
 }
 
-.active {
-  background-color: rgb(158, 239, 158);
+.keybord__key.active {
+  background: rgb(158, 239, 158);
   border-radius: 50px;
 }
 
