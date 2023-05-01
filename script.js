@@ -197,6 +197,9 @@ function keybordKeyDown () {
     if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
       shiftKeyDown ()
     }
+    if (event.code === "CapsLock") {
+      capsKeyOn ()
+    }
   })
 }
 
@@ -208,6 +211,9 @@ function keybordKeyUp () {
     if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
       shiftKeyUp ()
     }
+    if (event.code === "CapsLock" && (!document.querySelector(".keybord__key[data='" + event.code + "']").classList.contains("active"))) {
+      capsKeyOff ()
+    }
   })
 }
 
@@ -218,13 +224,20 @@ keybordKeyUp()
 function mouseClickDown () {
   document.querySelectorAll(".keybord__key").forEach(el => {
     el.addEventListener("mousedown", (event) => {
+      if (!event.target.closest(".keybord__key").getAttribute("data") === "CapsLock") {
       document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.add("active")
+      } else {
+        document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.toggle("active")
+      }
       inputKey ();
       if (event.target.closest(".keybord__key").getAttribute("data") === "Backspace") {
         backspace ()
       }
       if (event.target.closest(".keybord__key").getAttribute("data") === "ShiftLeft" || event.target.closest(".keybord__key").getAttribute("data") === "ShiftRight") {
         shiftKeyDown ()
+      }
+      if (event.target.closest(".keybord__key").getAttribute("data") === "CapsLock") {
+        capsKeyOn ()
       }
     })
   })
@@ -235,9 +248,14 @@ mouseClickDown ()
 function mouseClickUp () {
   document.querySelectorAll(".keybord__key").forEach(el => {
     el.addEventListener("mouseup", (event) => {
-      document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active");
+      if (!event.target.closest(".keybord__key").getAttribute("data") === "CapsLock") {
+        document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active");
+      }
       if (event.target.closest(".keybord__key").getAttribute("data") === "ShiftLeft" || event.target.closest(".keybord__key").getAttribute("data") === "ShiftRight") {
         shiftKeyUp ()
+      }
+      if ((!document.querySelector(".keybord__key[data='CapsLock']").classList.contains("active"))) {
+        capsKeyOff ()
       }
     })
     // el.addEventListener("mouseout", (event) => {
@@ -276,12 +294,22 @@ function backspace () {
 // Добавляю функию переключения языкa
 
 function switchLang () {
-  document.querySelectorAll(".key-en_lower").forEach(el => {
-    el.classList.toggle("hidden")
-  })
-  document.querySelectorAll(".key-ru_lower").forEach(el => {
-    el.classList.toggle("hidden")
-  })
+  if (document.querySelector(".keybord__key[data='CapsLock']").classList.contains("active")) {
+    document.querySelectorAll(".key-en_caps").forEach(el => {
+      el.classList.toggle("hidden")
+    })
+    document.querySelectorAll(".key-ru_caps").forEach(el => {
+      el.classList.toggle("hidden")
+    })
+  }
+  else {
+    document.querySelectorAll(".key-en_lower").forEach(el => {
+      el.classList.toggle("hidden")
+    })
+    document.querySelectorAll(".key-ru_lower").forEach(el => {
+      el.classList.toggle("hidden")
+    })
+  }
 }
 
 // Добавляю функию Shift
@@ -316,6 +344,34 @@ function shiftKeyUp () {
   });
 }
 
+// Добавляю функию CapsLock
 
+function capsKeyOn () {
+  document.querySelectorAll(".key").forEach(el => {
+    if (!el.classList.contains("hidden") && el.classList.contains("key-en_lower")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-en_caps").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+    if (!el.classList.contains("hidden") && el.classList.contains("key-ru_lower")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-ru_caps").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+  });
+}
 
-
+function capsKeyOff () {
+  document.querySelectorAll(".key").forEach(el => {
+    if (!el.classList.contains("hidden") && el.classList.contains("key-en_caps")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-en_lower").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+    if (!el.classList.contains("hidden") && el.classList.contains("key-ru_caps")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-ru_lower").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+  });
+}
