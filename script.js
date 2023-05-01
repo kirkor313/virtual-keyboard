@@ -1,3 +1,8 @@
+// Создаю local storage
+
+localStorage.setItem("lang", "en");
+let curLang = localStorage.getItem("lang")
+
 // Создаю тело для клавиатуры с дисплееем и полем под клавиши
 
 function initKeybord () {
@@ -27,7 +32,7 @@ function initTitle () {
 
 initTitle ();
 
-// Создаю шапку таска
+// Создаю дополнительтную информацию по заданию
 
 function initSubTitle () {
   const keybordDiscription = document.createElement("p");
