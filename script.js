@@ -200,6 +200,9 @@ function keybordKeyDown () {
     if (event.code === "CapsLock") {
       capsKeyOn ()
     }
+    if ((event.code === "ShiftLeft" || event.code === "ShiftRight") && (document.querySelector(".keybord__key[data='CapsLock']").classList.contains("active"))) {
+      shiftCapsOn ()
+    }
   })
 }
 
@@ -214,6 +217,9 @@ function keybordKeyUp () {
     if (event.code === "CapsLock" && (!document.querySelector(".keybord__key[data='" + event.code + "']").classList.contains("active"))) {
       capsKeyOff ()
     }
+    if ((event.code === "ShiftLeft" || event.code === "ShiftRight") && (document.querySelector(".keybord__key[data='CapsLock']").classList.contains("active"))) {
+      shiftCapsOff ()
+    }
   })
 }
 
@@ -224,10 +230,10 @@ keybordKeyUp()
 function mouseClickDown () {
   document.querySelectorAll(".keybord__key").forEach(el => {
     el.addEventListener("mousedown", (event) => {
-      if (!event.target.closest(".keybord__key").getAttribute("data") === "CapsLock") {
-      document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.add("active")
+      if (event.target.closest(".keybord__key").getAttribute("data") !== "CapsLock") {
+        document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.add("active")
       } else {
-        document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.toggle("active")
+      document.querySelector( ".keybord__key[data='CapsLock']").classList.add("active")
       }
       inputKey ();
       if (event.target.closest(".keybord__key").getAttribute("data") === "Backspace") {
@@ -239,6 +245,7 @@ function mouseClickDown () {
       if (event.target.closest(".keybord__key").getAttribute("data") === "CapsLock") {
         capsKeyOn ()
       }
+      
     })
   })
 }
@@ -248,7 +255,7 @@ mouseClickDown ()
 function mouseClickUp () {
   document.querySelectorAll(".keybord__key").forEach(el => {
     el.addEventListener("mouseup", (event) => {
-      if (!event.target.closest(".keybord__key").getAttribute("data") === "CapsLock") {
+      if (!event.target.closest(".keybord__key").getAttribute("data") !== "CapsLock") {
         document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active");
       }
       if (event.target.closest(".keybord__key").getAttribute("data") === "ShiftLeft" || event.target.closest(".keybord__key").getAttribute("data") === "ShiftRight") {
@@ -258,6 +265,8 @@ function mouseClickUp () {
         capsKeyOff ()
       }
     })
+
+
     // el.addEventListener("mouseout", (event) => {
     //   document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active");
     //   if (event.target.closest(".keybord__key").getAttribute("data") === "ShiftLeft" || event.target.closest(".keybord__key").getAttribute("data") === "ShiftRight") {
@@ -273,15 +282,33 @@ mouseClickUp ()
 
 function inputKey () {
   const textArea = document.querySelector(".keybord__display");
-  const activeSetKeys = document.querySelector(".active");
+  let activeSetKeys;
+  let value;
   let activeKey;
-  for(let i = 0; i < activeSetKeys.childNodes.length; i++) {
-    if(!activeSetKeys.childNodes[i].classList.contains("hidden")) {
-      activeKey = activeSetKeys.childNodes[i]
-    }
-  }
-  const value = activeKey.textContent;
-  textArea.value += `${value}`
+  document.querySelectorAll(".active").forEach(el => {
+      activeSetKeys = el
+      if ( el.getAttribute("data") !== "CapsLock"
+        && el.getAttribute("data") !== "Enter"
+        && el.getAttribute("data") !== "Tab"
+        && el.getAttribute("data") !== "ShiftLeft"
+        && el.getAttribute("data") !== "ShiftRight"
+        && el.getAttribute("data") !== "ControlLeft"
+        && el.getAttribute("data") !== "AltLeft"
+        && el.getAttribute("data") !== "AltRight"
+        && el.getAttribute("data") !== "MetaLeft"
+        && el.getAttribute("data") !== "MetaRight"
+        && el.getAttribute("data") !== "Delete"
+        && el.getAttribute("data") !== "Backspace") {
+          for(let i = 0; i < activeSetKeys.childNodes.length; i++) {
+            if(!activeSetKeys.childNodes[i].classList.contains("hidden")) {
+              activeKey = activeSetKeys.childNodes[i]
+            }
+          }
+        value = activeKey.textContent;
+        textArea.value += `${value}`
+      }
+      textArea.value += ''
+  });
 }
 
 // Добавляю функию backspace
@@ -371,6 +398,38 @@ function capsKeyOff () {
     if (!el.classList.contains("hidden") && el.classList.contains("key-ru_caps")) {
       el.classList.add("hidden");
       document.querySelectorAll(".key-ru_lower").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+  });
+}
+
+// Добавляю функию Shift + CapsLock
+
+function shiftCapsOn () {
+  document.querySelectorAll(".key").forEach(el => {
+    if (!el.classList.contains("hidden") && el.classList.contains("key-en_caps")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-en_shift-caps").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+    if (!el.classList.contains("hidden") && el.classList.contains("key-ru_caps")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-ru_shift-caps").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+  });
+}
+
+function shiftCapsOff () {
+  document.querySelectorAll(".key").forEach(el => {
+    if (!el.classList.contains("hidden") && el.classList.contains("key-en_shift-caps")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-en_caps").forEach( el =>
+        el.classList.remove("hidden"))
+    }
+    if (!el.classList.contains("hidden") && el.classList.contains("key-ru_shift-caps")) {
+      el.classList.add("hidden");
+      document.querySelectorAll(".key-ru_caps").forEach( el =>
         el.classList.remove("hidden"))
     }
   });
