@@ -284,14 +284,6 @@ function mouseClickUp () {
         capsKeyOff ()
       }
     })
-
-
-    // el.addEventListener("mouseout", (event) => {
-    //   document.querySelector( ".keybord__key[data='" + event.target.closest(".keybord__key").getAttribute("data") + "']").classList.remove("active");
-    //   if (event.target.closest(".keybord__key").getAttribute("data") === "ShiftLeft" || event.target.closest(".keybord__key").getAttribute("data") === "ShiftRight") {
-    //     shiftKeyUp ()
-    //   }
-    // })
   })
 }
 
