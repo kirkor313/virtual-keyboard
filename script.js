@@ -27,6 +27,21 @@ function initTitle () {
 
 initTitle ();
 
+// Создаю шапку таска
+
+function initSubTitle () {
+  const keybordDiscription = document.createElement("p");
+  keybordDiscription.className = "keybord__discription";
+  keybordDiscription.textContent = "Клавиатура создана в операционной системе MacOs";
+  document.querySelector(".keybord").append(keybordDiscription);
+  const keybordLang = document.createElement("p");
+  keybordLang.className = "keybord__lang";
+  keybordLang.textContent = "Для переключения языка комбинация: левыe ctrl + alt";
+  document.querySelector(".keybord").append(keybordLang);
+}
+
+initSubTitle ();
+
 // Создаю массивы для ряда клавиш
 
 const keybordKeys = [
@@ -245,7 +260,6 @@ function mouseClickDown () {
       if (event.target.closest(".keybord__key").getAttribute("data") === "CapsLock") {
         capsKeyOn ()
       }
-      
     })
   })
 }
@@ -282,9 +296,9 @@ mouseClickUp ()
 
 function inputKey () {
   const textArea = document.querySelector(".keybord__display");
-  let activeSetKeys;
-  let value;
-  let activeKey;
+  let activeSetKeys,
+      value,
+      activeKey;
   document.querySelectorAll(".active").forEach(el => {
       activeSetKeys = el
       if ( el.getAttribute("data") !== "CapsLock"
@@ -315,7 +329,7 @@ function inputKey () {
 
 function backspace () {
   const textArea = document.querySelector(".keybord__display");
-  textArea.value = textArea.value.substring(0, textArea.value.length - 10);
+  textArea.value = textArea.value.substring(0, textArea.value.length - 1);
 }
 
 // Добавляю функию переключения языкa

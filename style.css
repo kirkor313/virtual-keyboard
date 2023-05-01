@@ -112,3 +112,10 @@ body {
 .hidden {
   display: none;
 }
+
+.keybord__discription,
+.keybord__lang {
+  text-align: center;
+  font-size: 1.4rem;
+  color: rgb(0, 0, 0);
+}
