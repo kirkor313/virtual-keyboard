@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+.keybord__title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: orange;
+}
+
+.keybord {
+  margin: 0 auto;
+}
+
+.keybord__display {
+  display: block;
+  width: 800px;
+  height: 250px;
+  margin: 20px auto;
+  padding: 15px;
+  font-size: 1.6rem;
+  color: grey;
+}
+
+.keybord__keys {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 5px;
+  gap: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.keybord__key {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
+  transition: all .3s ease-in;
+}
+
+.keybord__key[data = "Space"] {
+  width: 250px;
+}
+
+.keybord__key[data = "ShiftRight"],
+.keybord__key[data = "ShiftLeft"] {
+  width: 105px;
+}
+
+.keybord__key[data = "Backspace"] {
+  width: 120px;
+}
+
+.keybord__key[data = "Delete"],
+.keybord__key[data = "Enter"] {
+  width: 80px;
+}
+
+.keybord__key[data = "CapsLock"],
+.keybord__key[data = "Tab"] {
+  width: 80px;
+}
+
+.keybord__key[data = "Space"],
+.keybord__key[data = "ShiftRight"],
+.keybord__key[data = "ShiftLeft"],
+.keybord__key[data = "Backspace"],
+.keybord__key[data = "Delete"],
+.keybord__key[data = "Enter"],
+.keybord__key[data = "CapsLock"],
+.keybord__key[data = "Tab"],
+.keybord__key[data = "ControlLeft"],
+.keybord__key[data = "AltLeft"],
+.keybord__key[data = "MetaLeft"],
+.keybord__key[data = "MetaRight"],
+.keybord__key[data = "AltRight"],
+.keybord__key[data = "ArrowLeft"],
+.keybord__key[data = "ArrowDown"],
+.keybord__key[data = "ArrowRight"],
+.keybord__key[data = "ArrowUp"] {
+  background: rgb(225, 225, 225);
+}
+
+.keybord__key:hover {
+  background-color: rgb(252, 189, 74);
+}
+
+.keybord__row {
+  display: flex;
+  column-gap: 10px;
+}
+
+.keybord__key.active {
+  background: rgb(158, 239, 158);
+  border-radius: 50px;
+}
+
+.hidden {
+  display: none;
+}
+
+.keybord__discription,
+.keybord__lang {
+  text-align: center;
+  font-size: 1.4rem;
+  color: rgb(0, 0, 0);
+}
